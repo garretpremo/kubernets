@@ -1,5 +1,5 @@
 resources:
-  - deployment.yaml
+  - statefulset.yaml
   - service-dns.yaml
   - service-web.yaml
 
