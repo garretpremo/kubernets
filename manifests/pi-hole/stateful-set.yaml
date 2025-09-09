@@ -55,7 +55,6 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: longhorn-one-replica-retain
         resources:
           requests:
             storage: 1Gi
@@ -65,7 +64,6 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: longhorn-one-replica-retain
         resources:
           requests:
             storage: 1Gi
