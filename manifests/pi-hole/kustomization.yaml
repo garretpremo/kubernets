@@ -1,5 +1,5 @@
 resources:
-  - stateful-set.yaml
+  - deployment.yaml
   - service-dns.yaml
   - service-web.yaml
   - service-headless.yaml

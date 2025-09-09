@@ -1,10 +1,9 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: pihole
 spec:
   replicas: 1
-  serviceName: headless
   selector: {}
   template:
     spec:
@@ -47,27 +46,7 @@ spec:
         - name: dnsmasq-config
           configMap:
             name: pihole-dnsmasq
-
-
-  volumeClaimTemplates:
-    - metadata:
-        name: pihole-storage
-        annotations:
-          volume.kubernetes.io/selected-node: k8s-control
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 1Gi
-
-    - metadata:
-        name: dnsmasq-storage
-        annotations:
-          volume.kubernetes.io/selected-node: k8s-control
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 1Gi
+        - name: pihole-storage
+          emptyDir: {}
+        - name: dnsmasq-storage
+          emptyDir: {}
