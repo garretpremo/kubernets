@@ -36,9 +36,9 @@ spec:
               name: http
               protocol: TCP
           volumeMounts:
-            - name: pihole-storage
+            - name: pihole-storage-v2
               mountPath: /etc/pihole
-            - name: dnsmasq-storage
+            - name: dnsmasq-storage-v2
               mountPath: /etc/dnsmasq.d
             - name: dnsmasq-config
               mountPath: /etc/dnsmasq.d/01-pihole.conf
@@ -51,19 +51,21 @@ spec:
 
   volumeClaimTemplates:
     - metadata:
-        name: pihole-storage
+        name: pihole-storage-v2
       spec:
         accessModes:
           - ReadWriteOnce
+        storageClassName: longhorn-one-replica-retain
         resources:
           requests:
             storage: 1Gi
 
     - metadata:
-        name: dnsmasq-storage
+        name: dnsmasq-storage-v2
       spec:
         accessModes:
           - ReadWriteOnce
+        storageClassName: longhorn-one-replica-retain
         resources:
           requests:
             storage: 1Gi
